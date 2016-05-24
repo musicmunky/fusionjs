@@ -9,6 +9,7 @@
 
 //create the FUSION object
 var FUSION = FUSION || {};
+var $F = FUSION;
 
 var loadjq = window.jQuery ? true : false;
 if(!loadjq){
