@@ -8,5 +8,5 @@ jQuery, etc.  But this is mine.  So it might be useless, but it's mine.
 #### Requirements
 The main thing you'll need if you want to use this is some version of jQuery, preferably the latest 1.x release greater than 1.8 or so.  I haven't tested the library
 with any of the 2.x or 3.x releases, so there's no guarantee it'll work with them.  You might ask, again, why I'm using this library at all
-when I'm already importing jQuery?  Well, honestly the only reason the library need jQuery is for the AJAX stuff, which I'm currently working on
-replacing.  The plan is to get to a point where it doesn't need jQuery, but until then you'll need it if you plan on doing an AJAX calls.
+when I'm already importing jQuery?  Well, honestly the only reason the library needs jQuery is for the AJAX stuff, which I'm currently working on
+replacing.  The plan is to get to a point where it doesn't need jQuery, but until then you'll need it if you want to make any AJAX calls.
