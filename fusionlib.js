@@ -790,8 +790,8 @@ FUSION.lib = {
 				for (var key in attrs)
 				{
 					attrname = key;
-					if(key.match(/^class/i)){
-						attrname = (br.browser.match(/ie/i) && parseInt(br.version) < 9) ? "className" : "class";
+					if(/^class/i.test(key)) {
+						attrname = (/ie/i.test(br.browser) && parseInt(br.version) < 9) ? "className" : "class";
 					}
 					el.setAttribute(attrname, attrs[key]);
 				}
@@ -805,7 +805,7 @@ FUSION.lib = {
 				for (var key in styls)
 				{
 					stylename = key;
-					if(key.match(/^float/)){
+					if(/^float/.test(key)){
 						stylename = "cssFloat";
 					}
 					stylearry = styls[key].split(" ");
