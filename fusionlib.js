@@ -190,6 +190,7 @@ FUSION.get = {
 			return phash;
 		}
 		catch(err) {
+			FUSION.error.logError(err);
 			phash['is_error'] = true;
 			phash['error'] = err;
 			return phash;
