@@ -167,7 +167,7 @@ FUSION.get = {
 	//returns the value of a URL parameter by name
 	urlParamByName: function(name, url) {
 		var location = url || window.location;
-		var rgx = new RexExp(name + "=" + "(.+?)(&|$)");
+		var rgx = new RegExp(name + "=" + "(.+?)(&|$)");
 		return decodeURI(
 			(rgx.exec(location)||[,null])[1]
 		);
