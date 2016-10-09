@@ -166,11 +166,22 @@ FUSION.get = {
 
 	//returns the value of a URL parameter by name
 	urlParamByName: function(name, url) {
-		var location = url || window.location;
-		var rgx = new RegExp(name + "=" + "(.+?)(&|$)");
-		return decodeURI(
-			(rgx.exec(location)||[,null])[1]
-		);
+		try {
+			var location = url || window.location;
+			var rgx = new RegExp(name + "=" + "(.+?)(&|$)");
+			var res = (rgx.exec(location)||[,null])[1]
+
+			if(res !== null && typeof res !== undefined) {
+				return decodeURI(res);
+			}
+			else {
+				return null;
+			}
+		}
+		catch(err) {
+			FUSION.error.logError(err);
+			return null;
+		}
 	},
 
 	//returns all of the parameters in a url in a JSON object (hash table)
