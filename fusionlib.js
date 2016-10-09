@@ -117,9 +117,7 @@ FUSION.get = {
 
 	//returns the X coordinate of the current mouse position
 	mouseX: function(e) {
-
-		return e.pageX ? e.pageX : e.clientX ? e.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft) : null;
-/*		if (e.pageX) {
+		if (e.pageX) {
 			return e.pageX;
 		}
 		if (e.clientX) {
@@ -127,14 +125,12 @@ FUSION.get = {
 									document.documentElement.scrollLeft :
 										document.body.scrollLeft);
 		}
-		return null;*/
+		return null;
 	},
 
 	//returns the Y coordinate of the current mouse position
 	mouseY: function(e) {
-
-		return e.pageY ? e.pageY : e.clientY ? e.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) : null;
-/*		if (e.pageY) {
+		if (e.pageY) {
 			return e.pageY;
 		}
 		if (e.clientY) {
@@ -142,7 +138,7 @@ FUSION.get = {
 									document.documentElement.scrollTop :
 										document.body.scrollTop);
 		}
-		return null;*/
+		return null;
 	},
 
 	//returns the size of an object - this is more geared towards JSON or
@@ -169,10 +165,11 @@ FUSION.get = {
 	},
 
 	//returns the value of a URL parameter by name
-	urlParamByName: function(name) {
+	urlParamByName: function(name, url) {
+		var location = url || window.location;
 		var rgx = new RexExp(name + "=" + "(.+?)(&|$)");
 		return decodeURI(
-			(rgx.exec(location.search)||[,null])[1]
+			(rgx.exec(location)||[,null])[1]
 		);
 	},
 
