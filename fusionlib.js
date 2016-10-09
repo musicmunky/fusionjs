@@ -864,25 +864,6 @@ FUSION.lib = {
 		}
 	},
 
-	//may end up removing this - it assumes too much regarding server configuration
-	//it was a good idea, but will probably be scrapped
-	sendErrorEmail: function(id) {
-		var uid = id;
-		var msg = FUSION.get.node("errormessage").value;
-		var fst = FUSION.get.node("fullstacktrace").value;
-		hideGeneralError();
-		var info = {
-			"type": "POST",
-			"path": "URLtoEmailFunctionality",
-			"data": {
-				user_id: uid,
-				message: msg,
-				trace: fst
-			}
-		};
-		FUSION.lib.ajaxCall(info);
-	},
-
 	//prevents a users from typing anything but numer characters in a text field
 	noAlpha: function(th)
 	{
