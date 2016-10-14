@@ -358,6 +358,7 @@ FUSION.remove = {
 		}
 		catch(err) {
 			FUSION.error.logError(err);
+			return false;
 		}
 	},
 };
