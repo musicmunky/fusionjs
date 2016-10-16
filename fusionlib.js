@@ -439,6 +439,17 @@ FUSION.error = {
 //BEGIN LIBRARY GENERIC METHODS
 FUSION.lib = {
 
+	//add commas to an integer number - does not work with decimal numbers
+	addCommas: function(int) {
+		try {
+			return (int + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+		}
+		catch(err) {
+			FUSION.error.logError(err);
+			return int;
+		}
+	},
+
 	//focus the cursor on a specific DOM element, usually an input field or a select box
 	focus: function(el) {
 		try {
