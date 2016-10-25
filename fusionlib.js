@@ -439,14 +439,16 @@ FUSION.error = {
 //BEGIN LIBRARY GENERIC METHODS
 FUSION.lib = {
 
-	//add commas to an integer number - does not work with decimal numbers
-	addCommas: function(int) {
+	//add commas to a number
+	addCommas: function(num) {
 		try {
-			return (int + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+			return (num + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(aMatches, grp1, grp2) {
+				return (grp1.charAt(0) > 0 && !(grp2 || ".").lastIndexOf(".") ? grp1.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : grp1) + grp2;
+			});
 		}
 		catch(err) {
 			FUSION.error.logError(err);
-			return int;
+			return num;
 		}
 	},
 
