@@ -16,17 +16,42 @@ if(!loadjq){
 	console.log("NOTICE: jQuery library is not loaded");
 }
 
-
-// Example uses for array.clean:
-// test = new Array("","One","Two","", "Three","","Four").clean("");
-// test2 = [1,2,,3,,3,,,,,,4,,4,,5,,6,,,,];
-// test2.clean(undefined);
 Array.prototype.clean = function(deleteValue) {
-	for (var i = 0; i < this.length; i++) {
-		if (this[i] == deleteValue) {
-			this.splice(i, 1);
-			i--;
+   /**
+	* Example uses for array.clean:
+	* var clean_array = new Array("","One","Two","", "Three","","Four").clean("");
+	*	=> returns ["One", "Two", "Three", "Four"]
+	* var dirty_array = [1,2,,3,,3,,null,undefined,"",,4,,4,,5,,6,,,,];
+	* dirty_array.clean([undefined,null,""]);
+	*	=> returns [1,2,3,3,4,4,5,6]
+	*/
+	try {
+		var del_array = [];
+		if(deleteValue === null || typeof deleteValue !== "object") {
+			if(deleteValue === undefined || typeof deleteValue === "undefined") {
+				del_array.push(undefined);
+			}
+			else if(deleteValue === null || typeof deleteValue === "null") {
+				del_array.push(null);
+			}
+			else {
+				del_array.push(deleteValue);
+			}
 		}
+		else {
+			del_array = deleteValue;
+		}
+		for(var j = 0; j < del_array.length; j++) {
+			for (var i = 0; i < this.length; i++) {
+				if (this[i] === del_array[j]) {
+					this.splice(i, 1);
+					i--;
+				}
+			}
+		}
+	}
+	catch(err) {
+		console.error("Error cleaning array: " + err.message);
 	}
 	return this;
 };
@@ -457,9 +482,7 @@ FUSION.lib = {
 		try {
 			//need to declare f here to avoid null reference errors
 			var f = FUSION;
-			setTimeout(function() {
-				f.get.node(el).focus()
-			}, 10);
+			setTimeout(function() {f.get.node(el).focus()}, 10);
 		}
 		catch(err) {
 			FUSION.error.logError(err);
