@@ -17,14 +17,14 @@ if(!loadjq){
 }
 
 Array.prototype.clean = function(deleteValue) {
-   /**
-	* Example uses for array.clean:
-	* var clean_array = new Array("","One","Two","", "Three","","Four").clean("");
-	*	=> returns ["One", "Two", "Three", "Four"]
-	* var dirty_array = [1,2,,3,,3,,null,undefined,"",,4,,4,,5,,6,,,,];
-	* dirty_array.clean([undefined,null,""]);
-	*	=> returns [1,2,3,3,4,4,5,6]
-	*/
+	/**
+	 * Example uses for array.clean:
+	 * var clean_array = new Array("","One","Two","", "Three","","Four").clean("");
+	 *	=> returns ["One", "Two", "Three", "Four"]
+	 * var dirty_array = [1,2,,3,,3,,null,undefined,"",,4,,4,,5,,6,,,,];
+	 * dirty_array.clean([undefined,null,""]);
+	 *	=> returns [1,2,3,3,4,4,5,6]
+	 */
 	try {
 		var del_array = [];
 		if(deleteValue === null || typeof deleteValue !== "object") {
