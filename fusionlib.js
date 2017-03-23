@@ -142,26 +142,26 @@ FUSION.get = {
 
 	//returns the X coordinate of the current mouse position
 	mouseX: function(e) {
+        var de = document.documentElement;
+        var db = document.body;
 		if (e.pageX) {
 			return e.pageX;
 		}
 		if (e.clientX) {
-			return e.clientX + (document.documentElement.scrollLeft ?
-									document.documentElement.scrollLeft :
-										document.body.scrollLeft);
+			return e.clientX + (de.scrollLeft ? de.scrollLeft : db.scrollLeft);
 		}
 		return null;
 	},
 
 	//returns the Y coordinate of the current mouse position
 	mouseY: function(e) {
+        var de = document.documentElement;
+        var db = document.body;
 		if (e.pageY) {
 			return e.pageY;
 		}
 		if (e.clientY) {
-			return e.clientY + (document.documentElement.scrollTop ?
-									document.documentElement.scrollTop :
-										document.body.scrollTop);
+			return e.clientY + (de.scrollTop ? de.scrollTop : db.scrollTop);
 		}
 		return null;
 	},
